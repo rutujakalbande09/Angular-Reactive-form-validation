@@ -1,0 +1,83 @@
+<h2>Products</h2>
+
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for=""> First Name</label>
+    <input type="text" placeholder="firstName" formControlName="Firstname" />
+    <span
+      for="required"
+      class="errorMsg"
+      *ngIf="registrationForm.get('Firstname').invalid && submitFlag"
+    >
+      First Name is Mandatory
+    </span>
+  </div>
+
+  <div>
+    <label for=""> Last Name</label>
+    <input type="text" placeholder="Lastname" formControlName="Lastname" />
+    <span
+      class="errorMsg"
+      *ngIf="registrationForm.get('Lastname').invalid && submitFlag"
+    >
+      Last Name is Mandatory
+    </span>
+  </div>
+
+  <div>
+    <label for=""> email Id</label>
+    <input type="text" placeholder="emailId" formControlName="emailId" />
+    <span
+      class="errorMsg"
+      *ngIf="registrationForm.get('emailId').invalid && submitFlag"
+    >
+      emailId is Mandatory
+    </span>
+  </div>
+
+  <div>
+    <label for=""> Mobilenumber</label>
+    <input
+      type="text"
+      placeholder="Mobilenumber"
+      formControlName="Mobilenumber"
+      name="Mobilenumber"
+    />
+
+    <span
+      for="required"
+      class="errorMsg"
+      *ngIf="r.Mobilenumber.errors?.required && submitFlag"
+    >
+      Mobilenumber is Mandatory
+    </span>
+    <span
+      for="required"
+      class="errorMsg"
+      *ngIf="r.Mobilenumber.errors?.pattern && submitFlag"
+    >
+      Mobilenumber should contain 10 digit
+    </span>
+  </div>
+
+  <div>
+    <label for=""> address</label>
+    <input type="text" placeholder="address" formControlName="address" />
+    <span
+      class="errorMsg"
+      *ngIf="registrationForm.get('address').invalid && submitFlag"
+    >
+      Address is Mandatory
+    </span>
+  </div>
+
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
