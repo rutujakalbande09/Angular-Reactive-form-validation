@@ -8,18 +8,47 @@ import { StudentData } from './student-data';
   providedIn: 'root',
 })
 export class RegistrationService {
-  urlValue: String = 'localhost:3000';
-
   constructor(private http: HttpClient) {}
 
   saveData(sData: StudentData) {
-    this.urlValue = this.urlValue + 'studentDetail';
-    this.http.post(this.urlValue, sData).subscribe();
+    alert('create Service' + sData.Firstname);
+    let d = new Date();
+    let hostUrl =
+      'http://localhost:3000/apps/student?v=' + d.toLocaleTimeString();
+    hostUrl = hostUrl + 'studentDetail';
+    this.http.post(hostUrl, sData).subscribe();
   }
 
-  getData() {}
+  searchData(sData: StudentData) {
+    alert('searchService  ' + sData.Firstname);
+    let d = new Date();
+    let hostUrl =
+      'http://localhost:3000/apps/student?v=' + d.toLocaleTimeString();
+    hostUrl = hostUrl + 'studentDetail';
+    this.http.get(hostUrl).subscribe();
+  }
 
-  updateData() {}
+  updateData(sData: StudentData) {
+    alert('updateService    ' + sData.Firstname);
+    let d = new Date();
+    let hostUrl =
+      'http://localhost:3000/apps/student/' +
+      sData.Firstname +
+      '?v=' +
+      d.toLocaleTimeString();
+    hostUrl = hostUrl + 'studentDetail';
+    this.http.put(hostUrl, sData).subscribe();
+  }
 
-  deleteData() {}
+  deleteData(sData: StudentData) {
+    alert('delete service   ' + sData.Lastname);
+    let d = new Date();
+    let hostUrl =
+      'http://localhost:3000/apps/student/' +
+      sData.Firstname +
+      '?v=' +
+      d.toLocaleTimeString();
+    hostUrl = hostUrl + 'studentDetail';
+    this.http.delete(hostUrl).subscribe();
+  }
 }
